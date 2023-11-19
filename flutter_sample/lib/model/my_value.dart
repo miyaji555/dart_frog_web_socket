@@ -18,3 +18,18 @@ Stream<int> counter(CounterRef ref) {
       .getChannel()
       .map((event) => int.parse(event.toString()));
 }
+
+@riverpod
+Future<void> increment(IncrementRef ref) async {
+  ref.watch(webSocketRepositoryProvider).increment();
+}
+
+@riverpod
+Future<void> decrement(DecrementRef ref) async {
+  ref.watch(webSocketRepositoryProvider).decrement();
+}
+
+@riverpod
+Future<void> close(CloseRef ref) async {
+  ref.watch(webSocketRepositoryProvider).close();
+}

@@ -29,7 +29,6 @@ class TopPage extends ConsumerWidget {
             const SizedBox(
               height: 100,
             ),
-            Text(ref.read(cityProvider)),
             Text(ref.read(countryProvider)),
             ref.watch(counterProvider).when(
               data: (value) {
@@ -42,6 +41,26 @@ class TopPage extends ConsumerWidget {
                 return const CircularProgressIndicator();
               },
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                    onPressed: () {
+                      ref.watch(incrementProvider);
+                    },
+                    child: Text("increment")),
+                ElevatedButton(
+                    onPressed: () {
+                      ref.watch(decrementProvider);
+                    },
+                    child: Text("decrement")),
+              ],
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  ref.watch(closeProvider);
+                },
+                child: Text("close")),
           ],
         ),
       ),
